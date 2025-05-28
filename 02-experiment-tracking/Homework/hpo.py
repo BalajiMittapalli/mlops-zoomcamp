@@ -71,6 +71,5 @@ def run_optimization(data_path: str, num_trials: int):
         rstate=rstate
     )
 
-
 if __name__ == '__main__':
     run_optimization()

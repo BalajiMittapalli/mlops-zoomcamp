@@ -46,7 +46,7 @@ def preprocess(df: pd.DataFrame, dv: DictVectorizer, fit_dv: bool = False):
     help="Location where the resulting files will be saved"
 )
 def run_data_prep(raw_data_path: str, dest_path: str, dataset: str = "green"):
-    # Load parquet files
+    
     df_train = read_dataframe(
         os.path.join(raw_data_path, f"{dataset}_tripdata_2023-01.parquet")
     )
@@ -57,22 +57,21 @@ def run_data_prep(raw_data_path: str, dest_path: str, dataset: str = "green"):
         os.path.join(raw_data_path, f"{dataset}_tripdata_2023-03.parquet")
     )
 
-    # Extract the target
+   
     target = 'duration'
     y_train = df_train[target].values
     y_val = df_val[target].values
     y_test = df_test[target].values
 
-    # Fit the DictVectorizer and preprocess data
+    
     dv = DictVectorizer()
     X_train, dv = preprocess(df_train, dv, fit_dv=True)
     X_val, _ = preprocess(df_val, dv, fit_dv=False)
     X_test, _ = preprocess(df_test, dv, fit_dv=False)
 
-    # Create dest_path folder unless it already exists
     os.makedirs(dest_path, exist_ok=True)
 
-    # Save DictVectorizer and datasets
+    
     dump_pickle(dv, os.path.join(dest_path, "dv.pkl"))
     dump_pickle((X_train, y_train), os.path.join(dest_path, "train.pkl"))
     dump_pickle((X_val, y_val), os.path.join(dest_path, "val.pkl"))

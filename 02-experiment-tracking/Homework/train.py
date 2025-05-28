@@ -33,6 +33,5 @@ def run_train(data_path: str):
         rmse = root_mean_squared_error(y_val, y_pred)
         print(f"RMSE: {rmse}")
 
-
 if __name__ == '__main__':
     run_train()

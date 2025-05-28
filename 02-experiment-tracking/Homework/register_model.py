@@ -26,7 +26,7 @@ def train_and_log_model(data_path, params):
     X_val, y_val = load_pickle(os.path.join(data_path, "val.pkl"))
     X_test, y_test = load_pickle(os.path.join(data_path, "test.pkl"))
 
-    # Cap the parameters to reduce model size & memory usage
+
     n_estimators = min(int(params.get("n_estimators", 10)), 10)
     max_depth = min(int(params.get("max_depth", 10)), 10)
     min_samples_split = int(params.get("min_samples_split", 2))
@@ -50,7 +50,7 @@ def train_and_log_model(data_path, params):
         test_rmse = np.sqrt(mean_squared_error(y_test, rf.predict(X_test)))
         mlflow.log_metric("test_rmse", test_rmse)
 
-        # Log params manually
+        
         mlflow.log_params({
             "n_estimators": n_estimators,
             "max_depth": max_depth,
@@ -65,7 +65,7 @@ def train_and_log_model(data_path, params):
 @click.command()
 @click.option(
     "--data_path",
-    default="../output",  # relative path to output folder from Homework/
+    default="../output",  
     help="Location where the processed NYC taxi trip data was saved"
 )
 @click.option(
@@ -77,7 +77,7 @@ def train_and_log_model(data_path, params):
 def run_register_model(data_path: str, top_n: int):
     client = MlflowClient()
 
-    # Fetch top hyperopt runs sorted by lowest RMSE (smaller top_n to limit memory)
+    
     hpo_experiment = client.get_experiment_by_name(HPO_EXPERIMENT_NAME)
     hpo_runs = client.search_runs(
         experiment_ids=hpo_experiment.experiment_id,
@@ -86,11 +86,9 @@ def run_register_model(data_path: str, top_n: int):
         order_by=["metrics.rmse ASC"]
     )
 
-    # Retrain and log each of top hyperopt runs (models)
     for run in hpo_runs:
         train_and_log_model(data_path=data_path, params=run.data.params)
 
-    # Find the best run from newly logged models by test_rmse
     best_model_experiment = client.get_experiment_by_name(EXPERIMENT_NAME)
     best_run = client.search_runs(
         experiment_ids=best_model_experiment.experiment_id,
