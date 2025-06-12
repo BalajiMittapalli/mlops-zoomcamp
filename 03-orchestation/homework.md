@@ -64,6 +64,7 @@ The model is trained, so let's save it with MLFlow.
 Find the logged model, and find MLModel file. What's the size of the model? (model_size_bytes field):
 
 * 9,534
+  
 ![model_size](https://github.com/user-attachments/assets/b69bcca6-01f6-490e-9d70-5344453f889c)
 
 
