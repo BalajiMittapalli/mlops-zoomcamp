@@ -12,7 +12,7 @@ What's the version of the orchestrator?
 
 * 3.0.1
 
-![Airflow Version](03-orchestation/image_airflow_version.png)
+![Airflow Version](../image_airflow_version.png)
 
 ## Question 3. Creating a pipeline
 
@@ -22,7 +22,7 @@ How many records did we load?
 
 * 3,403,766
 
-![Records Loaded](03-orchestation/image1.png)
+![Records Loaded](../image1.png)
 
 ## Question 4. Data preparation
 
@@ -33,7 +33,7 @@ What's the size of the result?
 
 * 3,316,216
 
-![Data Size After Preparation](03-orchestation/image2.png)
+![Data Size After Preparation](../image2.png)
 
 ## Question 5. Train a model
 
@@ -50,9 +50,9 @@ Hint: print the intercept_ field in the code block
 
 * 24.77
 
-![Model Intercept](03-orchestation/image3.png)
+![Model Intercept](../image3.png)
 
-![MLflow Parameters](03-orchestation/mlflow_parameters.png)
+![MLflow Parameters](../mlflow_parameters.png)
 
 ## Question 6. Register the model
 
@@ -62,4 +62,4 @@ Find the logged model, and find MLModel file. What's the size of the model? (mod
 
 * 9,534
 
-![Model Size](03-orchestation/model_size.png)
+![Model Size](../model_size.png)
