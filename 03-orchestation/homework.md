@@ -49,7 +49,7 @@ What's the intercept of the model?
 
 Hint: print the intercept_ field in the code block
 
-* 24.77
+* 24.77(23.82889069001763)
 
 ![image3](https://github.com/user-attachments/assets/be1286c4-cd01-4b55-9072-fcd81a7a0be1)
 
