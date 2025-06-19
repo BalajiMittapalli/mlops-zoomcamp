@@ -47,4 +47,4 @@ What's the mean predicted duration for May 2023?
 * 7.24
 * 14.24
 * 21.19
-~/C/M/m/0/homework (main)> docker exec zealous_herschel python ./starter.py -y 2023 -m 5 Year: 2023 Month: 5 Reading data from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-05.parquet Predictions: count 3.399555e+06 mean 1.917442e-01
+
